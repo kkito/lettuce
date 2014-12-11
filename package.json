@@ -1,0 +1,20 @@
+{
+  "name": "lettuce",
+  "version": "0.0.1",
+  "description": "static website generator , powered by gulp ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kkito/lettuce.git"
+  },
+  "author": "kk.shen",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-jade": "^0.10.0",
+    "through2": "^0.6.3"
+  }
+}
