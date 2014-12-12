@@ -60,3 +60,13 @@ gulp.task('default', function() {
     })
     */
 });
+var webserver = require('gulp-webserver');
+
+gulp.task('s', function() {
+    gulp.src('output')
+    .pipe(webserver({
+        livereload: true,
+        directoryListing: "output",
+        open: true
+    }));
+});
