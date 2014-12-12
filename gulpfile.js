@@ -15,9 +15,9 @@ gulp.task('default', function() {
     // place code for your default task here
     console.log("hello")
     gulp.src('src/content/**/*.jade')
-    // .pipe(contentFilter())
     // .pipe(databaseContent())
     .pipe(databaseContent(DataCenter.getBlogs))
+    .pipe(contentFilter())
     .pipe(jade())
     .pipe(gulp.dest('output'));
 
