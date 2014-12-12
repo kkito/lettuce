@@ -18,6 +18,7 @@
     "through2": "^0.6.3"
   },
   "dependencies": {
+    "sequelize": "^2.0.0-rc3",
     "vinyl": "^0.4.6"
   }
 }
