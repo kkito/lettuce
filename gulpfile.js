@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var jade = require("gulp-jade");
+var sass = require('gulp-sass');
 var contentFilter = require("./lib/gulp/contentFilter");
 var stream = require("stream")
 var ContentStream = require("./lib/gulp/ContentStream")
@@ -69,4 +70,10 @@ gulp.task('s', function() {
         directoryListing: "output",
         open: true
     }));
+});
+
+gulp.task('sass', function () {
+    gulp.src('src/css/**/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('output/css'));
 });
