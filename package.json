@@ -16,7 +16,9 @@
     "gulp": "^3.8.10",
     "gulp-jade": "^0.10.0",
     "gulp-webserver": "^0.8.8",
-    "through2": "^0.6.3"
+    "through2": "^0.6.3",
+    "sequelize-sqlite": "~1.7.0",
+    "sqlite3": "~3.0.4"
   },
   "dependencies": {
     "moment": "^2.8.4",
