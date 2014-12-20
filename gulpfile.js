@@ -9,18 +9,22 @@ var through = require('through2');
 var databaseContent = require("./lib/gulp/DatabaseContent")
 
 var DataCenter = require("./lib/DataCenter")
+var postItems = require("./lib/blog/post_items")
 
 // 从jade中读取fonter matter
 //https://github.com/jessaustin/jade-var-matter
 gulp.task('default', ["bower"] , function() {
-    // place code for your default task here
-    console.log("hello")
-    gulp.src('src/content/**/*.jade')
-    // .pipe(databaseContent())
-    .pipe(databaseContent(DataCenter.getBlogs))
-    .pipe(contentFilter())
-    .pipe(jade())
-    .pipe(gulp.dest('output'));
+    postItems.init()
+    .then(function(){
+        // place code for your default task here
+        // console.log("hello")
+        gulp.src('src/content/**/*.jade')
+        // .pipe(databaseContent())
+        .pipe(databaseContent())
+        .pipe(contentFilter())
+        .pipe(jade())
+        .pipe(gulp.dest('output'));
+    })
 
 
     /*
