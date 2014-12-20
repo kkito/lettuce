@@ -1,5 +1,5 @@
 p hello world222
-each file in _postItems.data
+each file in _postItems.data.reverse()
   li
-    .tl= file.title
+    a.tl(href=file.url)= file.title
 
