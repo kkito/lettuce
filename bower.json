@@ -17,5 +17,13 @@
   "dependencies": {
     "jquery": "~2.1.3",
     "underscore": "~1.7.0"
+  },
+  "overrides": {
+      "jquery" :{
+          "main": "dist/jquery.min.js"
+      },
+      "underscore" :{
+          "main": "underscore-min.js"
+      }
   }
 }

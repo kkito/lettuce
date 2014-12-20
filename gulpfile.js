@@ -77,3 +77,11 @@ gulp.task('sass', function () {
         .pipe(sass())
         .pipe(gulp.dest('output/css'));
 });
+
+gulp.task('bower', function() {
+    var bower = require('main-bower-files');
+    var bowerNormalizer = require('gulp-bower-normalize');
+    return gulp.src(bower(), {base: './bower_components'})
+        .pipe(bowerNormalizer({bowerJson: './bower.json'}))
+        .pipe(gulp.dest('./output/js/'))
+});
