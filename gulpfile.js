@@ -12,7 +12,7 @@ var DataCenter = require("./lib/DataCenter")
 
 // 从jade中读取fonter matter
 //https://github.com/jessaustin/jade-var-matter
-gulp.task('default', function() {
+gulp.task('default', ["bower"] , function() {
     // place code for your default task here
     console.log("hello")
     gulp.src('src/content/**/*.jade')
