@@ -1,0 +1,17 @@
+{
+  "name": "lettuce",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kkito/lettuce",
+  "authors": [
+    "kk.shen <kk.shen@saybot.com>"
+  ],
+  "description": "lettuce's bower",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
