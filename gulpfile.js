@@ -10,10 +10,11 @@ var databaseContent = require("./lib/gulp/DatabaseContent")
 
 var DataCenter = require("./lib/DataCenter")
 var postItems = require("./lib/blog/post_items")
+var jadeHelper = require("./lib/jade/helper");
 
 // 从jade中读取fonter matter
 //https://github.com/jessaustin/jade-var-matter
-gulp.task('default', ["bower"] , function() {
+gulp.task('default', ["bower" , "sass"] , function() {
     postItems.init()
     .then(function(){
         // place code for your default task here
@@ -22,7 +23,9 @@ gulp.task('default', ["bower"] , function() {
         // .pipe(databaseContent())
         .pipe(databaseContent())
         .pipe(contentFilter())
-        .pipe(jade())
+        .pipe(jade({
+            locals: jadeHelper
+        }))
         .pipe(gulp.dest('output'));
     })
 

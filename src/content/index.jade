@@ -1,5 +1,6 @@
-p hello world222
-each file in _postItems.data.reverse()
-  li
-    a.tl(href=file.url)= file.title
-
+extends ./_layout/layout
+block content
+  each file in _postItems.data.reverse()
+    li
+      a.tl(href=file.url)= file.title
+  
