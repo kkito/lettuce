@@ -7,6 +7,7 @@ var ContentStream = require("./lib/gulp/ContentStream")
 var File = require('vinyl');
 var through = require('through2');
 var databaseContent = require("./lib/gulp/DatabaseContent")
+var PostFilter = require("./lib/gulp/PostFilter")
 
 var DataCenter = require("./lib/DataCenter")
 var postItems = require("./lib/blog/post_items")
@@ -26,6 +27,7 @@ gulp.task('default', ["bower" , "sass"] , function() {
         // place code for your default task here
         // console.log("hello")
         gulp.src('src/content/**/*.jade')
+        .pipe(PostFilter())
         // .pipe(databaseContent())
         .pipe(databaseContent())
         .pipe(contentFilter())
