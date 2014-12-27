@@ -1,0 +1,17 @@
+-var title = "the front matter jade vs haml"
+extends ./../../_layout/layout
+block content
+  :markdown
+    haml中的matter效果特别好
+    ```
+    ---
+    title: blahbalh
+    date: 2014-02-03
+    city:
+      name: sh
+      districts: [1,2,3]
+    ---
+    ```
+    这种yml天然集成进去非常自然，可惜jade就没有，google了一圈只找到了 
+    [jade var matter](https://github.com/jessaustin/jade-var-matter) 
+    功能是实现了，但结构上看到去变扭的很
