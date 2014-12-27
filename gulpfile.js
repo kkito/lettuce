@@ -11,7 +11,13 @@ var databaseContent = require("./lib/gulp/DatabaseContent")
 var DataCenter = require("./lib/DataCenter")
 var postItems = require("./lib/blog/post_items")
 var jadeHelper = require("./lib/jade/helper");
+var Post = require("./lib/blog/post")
 
+
+gulp.task("test" , function(){
+    var p1 = new Post("sdfasdfsadf")
+    p1.echo()
+})
 // 从jade中读取fonter matter
 //https://github.com/jessaustin/jade-var-matter
 gulp.task('default', ["bower" , "sass"] , function() {

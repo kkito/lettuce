@@ -27,6 +27,7 @@
   "dependencies": {
     "moment": "^2.8.4",
     "sequelize": "^2.0.0-rc3",
-    "vinyl": "^0.4.6"
+    "vinyl": "^0.4.6",
+    "jsclass": "~4.0.5"
   }
 }

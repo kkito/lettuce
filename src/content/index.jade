@@ -1,6 +1,6 @@
 extends ./_layout/layout
 block content
-  each file in _postItems.data.reverse()
+  each post in _postItems.data.reverse()
     li
-      a.tl(href=file.url)= file.title
+      a.tl(href=post.url())= post.title
   
