@@ -21,7 +21,7 @@ gulp.task("test" , function(){
 })
 // 从jade中读取fonter matter
 //https://github.com/jessaustin/jade-var-matter
-gulp.task('default', ["bower" , "sass"] , function() {
+gulp.task('default', ["bower" , "sass" , "js"] , function() {
     postItems.init()
     .then(function(){
         // place code for your default task here
@@ -92,6 +92,11 @@ gulp.task('sass', function () {
         .pipe(sass())
         .pipe(gulp.dest('output/css'));
 });
+
+gulp.task('js' , function(){
+    gulp.src('src/js/*.js')
+        .pipe(gulp.dest('output/js'));
+})
 
 gulp.task('bower', function() {
     var bower = require('main-bower-files');
