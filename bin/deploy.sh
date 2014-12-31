@@ -1,2 +1,4 @@
 #!/bin/bash
-rsync -av output/ rijx:/var/www/blog/
+rm -rf output
+gulp
+rsync -av --delete output/ rijx:/var/www/blog/
