@@ -5,3 +5,10 @@ block content
       a.tl(href=post.url())= post.title
   #example
   script(type="text/jsx" src="js/main.js")
+  script(type="text/jsx").
+    React.render(
+      <IndexPosts posts={!{JSON.stringify(_postItems.links())}} />,
+      document.getElementById('example')
+    );
+
+
