@@ -9,7 +9,11 @@ var PagePostLinks = React.createClass({
         var links = this.props.posts.map(function(post){
             return <PostLink url={post.url} title={post.title} />
         })
-        return <ul className={"page-" + this.props.page}>{links}</ul>
+        var theClass = "page-" + this.props.page;
+        if(theClass == "page-1") {
+            theClass += " current";
+        }
+        return <ul className={theClass}>{links}</ul>
     }
 })
 
@@ -41,6 +45,8 @@ var IndexPosts = React.createClass({
     },
     indexClickHandler: function(i) {
         console.log("this " + i + " is clicked");
+        $(".pages ul").removeClass("current");
+        $(".page-" + i).addClass("current");
     },
     render: function(){
         var pages = this.groupPosts().map(function(posts , idx){
