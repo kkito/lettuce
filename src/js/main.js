@@ -9,7 +9,23 @@ var PagePostLinks = React.createClass({
         var links = this.props.posts.map(function(post){
             return <PostLink url={post.url} title={post.title} />
         })
-        return <ul>{links}</ul>
+        return <ul className={"page-" + this.props.page}>{links}</ul>
+    }
+})
+
+var PageIndex = React.createClass({
+    render: function(){
+        return <li onClick={this.props.clickHandler.bind(this , this.props.pageNumber)}>{this.props.pageNumber}</li>
+    }
+})
+
+var PageIndexs = React.createClass({
+    render: function(){
+        var indexs = []
+        for(var i = 0 ; i < this.props.pageSize ; i++){
+            indexs.push(<PageIndex pageNumber={i + 1} clickHandler={this.props.clickHandler}/>)
+        }
+        return <ul className="idx">{indexs}</ul>
     }
 })
 
@@ -23,11 +39,14 @@ var IndexPosts = React.createClass({
         }
         return result;
     },
+    indexClickHandler: function(i) {
+        console.log("this " + i + " is clicked");
+    },
     render: function(){
-        var pages = this.groupPosts().map(function(posts){
-            return <PagePostLinks posts={posts} />
+        var pages = this.groupPosts().map(function(posts , idx){
+            return <PagePostLinks posts={posts} page={idx+1}/>
         })
-        return <div>{pages}</div>
+        return <div className="post-list"><div className="pages">{pages}</div><PageIndexs pageSize={pages.length} clickHandler={this.indexClickHandler}/></div>
     }
 })
 
