@@ -1,13 +1,13 @@
 extends ./_layout/layout
 block content
-  each post in _postItems.data.reverse()
-    li
-      a.tl(href=post.url())= post.title
+  // each post in _postItems.data.reverse()
+  //   li
+  //     a.tl(href=post.url())= post.title
   #example
   script(type="text/jsx" src="js/main.js")
   script(type="text/jsx").
     React.render(
-      <IndexPosts posts={!{JSON.stringify(_postItems.links())}} />,
+      <IndexPosts posts={!{JSON.stringify(_postItems.links().reverse())}} />,
       document.getElementById('example')
     );
 
