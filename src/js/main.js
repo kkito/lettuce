@@ -24,10 +24,26 @@ var PageIndex = React.createClass({
 })
 
 var PageIndexs = React.createClass({
+    offsetKeepSize: 3,
+    getInitialState: function() {
+        return {currentPage: this.props.currentPage};
+    },
+    indexClickHandler: function(i) {
+        this.setState({currentPage: i});
+        this.props.clickHandler(i)
+    },
     render: function(){
-        var indexs = []
+        var indexs = [];
         for(var i = 0 ; i < this.props.pageSize ; i++){
-            indexs.push(<PageIndex pageNumber={i + 1} clickHandler={this.props.clickHandler}/>)
+            if(this.offsetKeepSize > i || this.offsetKeepSize + i + 1 > this.props.pageSize) {
+                indexs.push(<PageIndex pageNumber={i + 1} clickHandler={this.indexClickHandler}/>)
+            }else {
+                if(Math.abs(this.state.currentPage - i - 1) < this.offsetKeepSize){
+                    indexs.push(<PageIndex pageNumber={i + 1} clickHandler={this.indexClickHandler}/>)
+                }else{
+                    indexs.push(<li className="omit">.</li>)
+                }
+            }
         }
         return <ul className="idx">{indexs}</ul>
     }
@@ -52,7 +68,7 @@ var IndexPosts = React.createClass({
         var pages = this.groupPosts().map(function(posts , idx){
             return <PagePostLinks posts={posts} page={idx+1}/>
         })
-        return <div className="post-list"><div className="pages">{pages}</div><PageIndexs pageSize={pages.length} clickHandler={this.indexClickHandler}/></div>
+        return <div className="post-list"><div className="pages">{pages}</div><PageIndexs pageSize={pages.length} currentPage={1} clickHandler={this.indexClickHandler}/></div>
     }
 })
 
