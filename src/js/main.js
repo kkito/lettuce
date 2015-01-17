@@ -35,14 +35,13 @@ var PageIndexs = React.createClass({
     render: function(){
         var indexs = [];
         for(var i = 0 ; i < this.props.pageSize ; i++){
-            if(this.offsetKeepSize > i || this.offsetKeepSize + i + 1 > this.props.pageSize) {
-                indexs.push(<PageIndex pageNumber={i + 1} clickHandler={this.indexClickHandler}/>)
+            var isBesides = this.offsetKeepSize > i || this.offsetKeepSize + i + 1 > this.props.pageSize;
+            var isCurrent = ((i+1) == this.state.currentPage);
+            var isBesideCurrent = Math.abs(this.state.currentPage - i - 1) < this.offsetKeepSize;
+            if(isBesides || isBesideCurrent) {
+                indexs.push(<PageIndex className={isCurrent ? "current" : ""} pageNumber={i + 1} clickHandler={this.indexClickHandler}/>)
             }else {
-                if(Math.abs(this.state.currentPage - i - 1) < this.offsetKeepSize){
-                    indexs.push(<PageIndex pageNumber={i + 1} clickHandler={this.indexClickHandler}/>)
-                }else{
-                    indexs.push(<li className="omit">.</li>)
-                }
+                indexs.push(<li className="omit">.</li>)
             }
         }
         return <ul className="idx">{indexs}</ul>
