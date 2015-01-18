@@ -19,7 +19,8 @@ var PagePostLinks = React.createClass({
 
 var PageIndex = React.createClass({
     render: function(){
-        return <li onClick={this.props.clickHandler.bind(this , this.props.pageNumber)}>{this.props.pageNumber}</li>
+        var theClass = (this.props.currentPage == this.props.pageNumber) ? "current" : "";
+        return <li className={theClass} onClick={this.props.clickHandler.bind(this , this.props.pageNumber)}>{this.props.pageNumber}</li>
     }
 })
 
@@ -39,7 +40,7 @@ var PageIndexs = React.createClass({
             var isCurrent = ((i+1) == this.state.currentPage);
             var isBesideCurrent = Math.abs(this.state.currentPage - i - 1) < this.offsetKeepSize;
             if(isBesides || isBesideCurrent) {
-                indexs.push(<PageIndex className={isCurrent ? "current" : ""} pageNumber={i + 1} clickHandler={this.indexClickHandler}/>)
+                indexs.push(<PageIndex currentPage={this.state.currentPage} pageNumber={i + 1} clickHandler={this.indexClickHandler}/>)
             }else {
                 indexs.push(<li className="omit">.</li>)
             }
