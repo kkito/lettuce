@@ -17,7 +17,8 @@
   "dependencies": {
     "jquery": "~2.1.3",
     "underscore": "~1.7.0",
-    "react": "~0.12.2"
+    "react": "~0.12.2",
+    "highlight": "~7.0.1"
   },
   "overrides": {
     "jquery": {
@@ -26,8 +27,19 @@
     "underscore": {
       "main": "underscore-min.js"
     },
-    "react":{
-        "main": ["react.min.js" , "JSXTransformer.js"]
+    "react": {
+      "main": [
+        "react.min.js",
+        "JSXTransformer.js"
+      ]
+    },
+    "highlight":{
+        "main": [
+            "src/highlight.js",
+            "src/languages/*",
+            "src/styles/*"
+        ]
     }
   }
+
 }
