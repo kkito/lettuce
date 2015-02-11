@@ -16,10 +16,4 @@ html
     .body
       block content
     .footer
-    script(src="http://cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js")
-    link(href=url('http://cdn.jsdelivr.net/highlight.js/8.4/styles/monokai_sublime.min.css'), rel='stylesheet')
-    script.
-      hljs.initHighlightingOnLoad();
-      $('pre').each(function(i, block) {
-        hljs.highlightBlock(block);
-      });
+    include ./includes/highlightjs.jade
