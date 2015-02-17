@@ -8,73 +8,35 @@ var File = require('vinyl');
 var through = require('through2');
 var databaseContent = require("./lib/gulp/DatabaseContent")
 var PostFilter = require("./lib/gulp/PostFilter")
+var MarkDownFilter = require("./lib/gulp/MarkDownFilter")
 
 var DataCenter = require("./lib/DataCenter")
 var postItems = require("./lib/blog/post_items")
 var jadeHelper = require("./lib/jade/helper");
 var Post = require("./lib/blog/post")
 
-
-gulp.task("test" , function(){
-    var p1 = new Post("sdfasdfsadf")
-    p1.echo()
-})
-// 从jade中读取fonter matter
-//https://github.com/jessaustin/jade-var-matter
-gulp.task('default', ["bower" , "sass" , "js"] , function() {
-    postItems.init()
-    .then(function(){
-        // place code for your default task here
-        // console.log("hello")
-        gulp.src('src/content/**/*.jade')
-        .pipe(PostFilter())
-        // .pipe(databaseContent())
-        .pipe(databaseContent())
-        .pipe(contentFilter())
-        .pipe(jade({
-            locals: jadeHelper
-        }))
-        .pipe(gulp.dest('output'));
-    })
-
-
-    /*
-    new File({
-    cwd: "/",
-    base: "/content/",
-    path: "/content/myfile.jade",
-    contents: new Buffer("h2 hello myfile")
-    }).pipe(function() {
-    var stream = through.obj(function(file, enc, cb) {
-    file = new File({
-    cwd: "/",
-    base: "/content/",
-    path: "/content/myfile.jade",
-    contents: new Buffer("h2 hello myfile")
-    });
-    console.log(file)
-    this.push(file)
-    file = new File({
-    cwd: "/",
-    base: "src/content/",
-    path: "src/content/myfile2.jade",
-    contents: new Buffer("extends ./_layout/layout\nblock content\n  h1 hello world")
-    });
-    this.push(file)
-    cb();
-    });
-    return stream;
-    }())
-    .pipe(jade())
+function buildJadeFromPipe(fromPipe) {
+    fromPipe
+    .pipe(jade({
+        locals: jadeHelper
+    }))
     .pipe(gulp.dest('output'));
-    DataCenter.getBlogs()
-    .then(function(posts) {
-    console.log("posts size is " + posts.length)
-    })
-    .error(function(err) {
-    console.log("error happened " + err)
-    })
-    */
+}
+
+gulp.task('default', ["bower" , "sass" , "js"] , function() {
+    buildJadeFromPipe(
+        gulp.src('src/content/**/*.jade')
+        // deal the jade  post
+        .pipe(PostFilter())
+        // deal the database item
+        .pipe(databaseContent())
+        // remove prefix with _ jade layout etc
+        .pipe(contentFilter())
+    );
+    buildJadeFromPipe(
+        gulp.src('src/content/**/*.md')
+        .pipe(MarkDownFilter())
+    );
 });
 var webserver = require('gulp-webserver');
 
@@ -89,19 +51,19 @@ gulp.task('s', function() {
 
 gulp.task('sass', function () {
     gulp.src('src/css/**/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('output/css'));
+    .pipe(sass())
+    .pipe(gulp.dest('output/css'));
 });
 
 gulp.task('js' , function(){
     gulp.src('src/js/*.js')
-        .pipe(gulp.dest('output/js'));
+    .pipe(gulp.dest('output/js'));
 })
 
 gulp.task('bower', function() {
     var bower = require('main-bower-files');
     var bowerNormalizer = require('gulp-bower-normalize');
     return gulp.src(bower(), {base: './bower_components'})
-        .pipe(bowerNormalizer({bowerJson: './bower.json'}))
-        .pipe(gulp.dest('./output/js/'))
+    .pipe(bowerNormalizer({bowerJson: './bower.json'}))
+    .pipe(gulp.dest('./output/js/'))
 });
