@@ -23,19 +23,38 @@ function buildJadeFromPipe(fromPipe) {
     .pipe(gulp.dest('output'));
 }
 
-gulp.task('default', ["bower" , "sass" , "js"] , function() {
+gulp.task("dbpost" , function(){
+    postItems.init()
+    .then(function(){
+        buildJadeFromPipe(
+            gulp.src('src/content/posts/**/*.jade')
+            // deal the database item
+            .pipe(databaseContent())
+            // remove prefix with _ jade layout etc
+            .pipe(contentFilter())
+        );
+    });
+})
+gulp.task("jadepost" , function(){
     buildJadeFromPipe(
         gulp.src('src/content/**/*.jade')
         // deal the jade  post
         .pipe(PostFilter())
-        // deal the database item
-        .pipe(databaseContent())
         // remove prefix with _ jade layout etc
         .pipe(contentFilter())
     );
+})
+
+gulp.task("markdownpost" , function(){
     buildJadeFromPipe(
         gulp.src('src/content/**/*.md')
         .pipe(MarkDownFilter())
+    );
+})
+
+gulp.task('default', ["dbpost" , "jadepost" , "markdownpost" , "bower" , "sass" , "js"] , function() {
+    buildJadeFromPipe(
+        gulp.src('src/content/posts/*.jade')
     );
 });
 var webserver = require('gulp-webserver');
