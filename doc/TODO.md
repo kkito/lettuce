@@ -4,4 +4,5 @@
 1. get json throw ajax
 1. ~~code format , highlight js auto detection~~
 1. read create time using git
-1. make article only use md file support
+1. ~~make article only use md file support~~
+1. show title and edit date in article page
