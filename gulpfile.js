@@ -44,6 +44,7 @@ gulp.task('s', function() {
     gulp.src('output')
     .pipe(webserver({
         livereload: true,
+        host: "0.0.0.0",
         directoryListing: "output",
         open: true
     }));
