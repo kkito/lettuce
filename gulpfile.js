@@ -17,6 +17,8 @@ var Post = require("./lib/blog/post")
 
 function buildJadeFromPipe(fromPipe) {
     fromPipe
+    // remove prefix with _ jade layout etc
+    .pipe(contentFilter())
     .pipe(jade({
         locals: jadeHelper
     }))
@@ -30,8 +32,6 @@ gulp.task("dbpost" , function(){
             gulp.src('src/content/posts/**/*.jade')
             // deal the database item
             .pipe(databaseContent())
-            // remove prefix with _ jade layout etc
-            .pipe(contentFilter())
         );
     });
 })
@@ -40,8 +40,6 @@ gulp.task("jadepost" , function(){
         gulp.src('src/content/**/*.jade')
         // deal the jade  post
         .pipe(PostFilter())
-        // remove prefix with _ jade layout etc
-        .pipe(contentFilter())
     );
 })
 
