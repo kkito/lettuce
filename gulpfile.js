@@ -29,7 +29,7 @@ gulp.task("dbpost" , function(){
     postItems.init()
     .then(function(){
         buildJadeFromPipe(
-            gulp.src('src/content/posts/**/*.jade')
+            gulp.src('src/content/*.jade')
             // deal the database item
             .pipe(databaseContent())
         );
