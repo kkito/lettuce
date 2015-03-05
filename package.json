@@ -30,6 +30,7 @@
     "vinyl": "^0.4.6",
     "jsclass": "~4.0.5",
     "marked": "~0.3.2",
-    "jade-var-matter": "0.0.5"
+    "jade-var-matter": "0.0.5",
+    "jade": "~1.9.2"
   }
 }
