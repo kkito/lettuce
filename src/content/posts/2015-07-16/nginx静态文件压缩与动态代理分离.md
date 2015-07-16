@@ -1,7 +1,7 @@
 ## Nginx 配置静态文件与动态请求分离，静态文件压缩
 
 
-# 动静态请求分离
+### 动静态请求分离
 
 ```
 include /etc/nginx/conf.d/*.conf; # nginx.conf会有这个配置，直接把相关网站配置放在 conf.d下
@@ -22,7 +22,7 @@ server {
 ```
 
 
-# 静态文件启用压缩
+### 静态文件启用压缩
 
 ```
 # 全局启用在 nginx.conf下
@@ -38,7 +38,7 @@ http {
 ```
 
 
-# 配置完之后如何尝试
+### 配置完之后如何尝试
 
 ```
 curl -H 'Accept-Encoding:gzip' theurl # 客户端测试下 ,看到乱码就对了
