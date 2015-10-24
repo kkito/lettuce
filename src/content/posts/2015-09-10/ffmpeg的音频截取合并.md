@@ -33,3 +33,23 @@ ffmpeg -i part1.mp4 -i part2.mp4 -i part3.mp4 -filter_complex '[0:0] [0:1] [1:0]
 ffmpeg -i part1.mp4 -i part3.mp4 -filter_complex '[0:0] [0:1] [1:0] [1:1] concat=n=2:v=1:a=1 [v] [a]'   -map '[v]' -map '[a]' output.mp4
 ```
 
+
+1. 生成空白slient mp3
+
+```
+ffmpeg -ar 48000 -t 60 -f s16le -acodec pcm_s16le -ac 2 -i /dev/zero -acodec libmp3lame -aq 4 output.mp3
+```
+
+2. 两个音频重叠合并起来，时间按短的来
+
+```
+ffmpeg -i 01.MP3 -i output.mp3 -filter_complex amerge -c:a libmp3lame -q:a 4 concat2.mp3
+```
+
+3. 两个音频加起来
+
+```
+ffmpeg -i "concat:01.MP3|02.MP3" -i 02.MP3 -acodec copy test.mp3 -map_metadata 0:1
+ffmpeg -i "concat:01.MP3|02.MP3"  -acodec copy test2.mp3
+```
+
