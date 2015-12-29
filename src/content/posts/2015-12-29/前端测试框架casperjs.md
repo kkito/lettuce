@@ -6,7 +6,7 @@ PhantomJS做为一个headless的浏览器可以在命令行下完全当成一个
 
 ### 安装CasperJS
 
-理论上npm install -g capserjs就可以了，但是也不知道是慢还是墙，反正超级麻烦，taobao提供了cnpm , http://npm.taobao.org[http://npm.taobao.org] ，安装好cnpm之后 cnpm install -g casperjs 就可以了
+理论上npm install -g capserjs就可以了，但是也不知道是慢还是墙，反正超级麻烦，taobao提供了cnpm , [http://npm.taobao.org](http://npm.taobao.org) ，安装好cnpm之后 cnpm install -g casperjs 就可以了
 
 ### 使用CasperJS的一般功能
 
@@ -24,7 +24,7 @@ casper.thenOpen('http://beta.shuobaotang.com/products/courseware/courseware.html
     this.echo(this.getTitle());
 });
 
-var hezuo_url = "http://beta.shuobaotang.com/cooperation/general.html";                                                                                                     
+var hezuo_url = "http://beta.shuobaotang.com/cooperation/general.html";
 var hezuo_url = "http://beta.shuobaotang.com/cooperation/public_school/cases.html";
     casper.thenOpen(hezuo_url, function() {
     this.echo(this.getTitle());
