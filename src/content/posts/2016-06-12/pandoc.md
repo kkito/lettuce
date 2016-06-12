@@ -8,7 +8,11 @@
 brew install pandoc
 brew install Caskroom/cask/mactex # 生成pdf的时候需要
 # 否则报错 pandoc: pdflatex not found. pdflatex is needed for pdf output.
-# 看来生成pdf是借助了latex
+# 生成pdf是借助了latex
+# 用到了命令 pdflatex 
+# 该命令位于 /usr/texbin
+# 需要把这个目录放到PATH路径下
+
 ```
 
 ### 使用
