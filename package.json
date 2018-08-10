@@ -4,7 +4,8 @@
   "description": "static website generator , powered by gulp ",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "bower install ; gulp"
   },
   "repository": {
     "type": "git",
@@ -17,20 +18,19 @@
     "gulp-jade": "^0.10.0",
     "gulp-webserver": "^0.8.8",
     "through2": "^0.6.3",
-    "sequelize-sqlite": "~1.7.0",
-    "sqlite3": "~3.0.4",
     "bower": "~1.3.12",
     "gulp-bower-normalize": "~1.0.3",
-    "gulp-sass": "~1.2.4",
     "main-bower-files": "~2.4.1"
   },
   "dependencies": {
-    "moment": "^2.8.4",
-    "sequelize": "^2.0.0-rc3",
-    "vinyl": "^0.4.6",
+    "gulp-sass": "^4.0.1",
+    "jade": "~1.9.2",
+    "jade-var-matter": "0.0.5",
     "jsclass": "~4.0.5",
     "marked": "~0.3.2",
-    "jade-var-matter": "0.0.5",
-    "jade": "~1.9.2"
+    "moment": "^2.8.4",
+    "sequelize": "^2.0.0-rc3",
+    "sqlite3": "^4.0.2",
+    "vinyl": "^0.4.6"
   }
 }
