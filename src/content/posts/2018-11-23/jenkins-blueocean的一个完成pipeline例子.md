@@ -128,3 +128,36 @@ pipeline {
 }
 ```
 
+### 利用到多个docker联合处理的例子
+
+```
+node {
+    checkout scm
+
+    stage('Build') {
+        sh 'echo "this is build"'
+    }
+
+    stage('Test') {
+        docker.image('mysql/mysql-server:5.7').withRun(' -e "MYSQL_ROOT_PASSWORD=123456" -e "MYSQL_USER=admin" -e "MYSQL_PASSWORD=admin" -e "MYSQL_DATABASE=admin" --expose=3306') { mysql ->
+        docker.image('neo4j:latest').withRun('-e "NEO4J_AUTH=neo4j/admin"') { neo4j ->
+        docker.image('mongo:3.4').withRun('-e "NEO4J_AUTH=neo4j/admin"') { mongo ->
+                sh 'ls -l'
+                docker.build("backend:${env.BUILD_ID}").inside("--link ${mysql.id}:mysql --link ${neo4j.id}:neo4j --link ${mongo.id}:mongo") {
+                    sh 'python --version'
+                    sh 'ls -l'
+                    sh 'pip install mock'
+                    sh 'sleep 20'
+                    sh 'python -m unittest discover . "*test.py"'
+                }
+                }
+                }
+        }
+    }
+
+    stage('Deploy @ Dev') {
+        sh 'echo "hello world12"'
+    }
+}
+
+```
