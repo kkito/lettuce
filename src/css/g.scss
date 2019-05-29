@@ -1,6 +1,6 @@
 body {
-    font-size: 14px;
-    max-width: 960px;
+    font-size: medium;
+    max-width: 1280px;
     margin: 0 auto;
     line-height: 1.4em;
     a {
@@ -35,6 +35,41 @@ body {
             .current{
                 background-color: #42d203;
             }
+        }
+    }
+    .db-blog-item {
+        line-height: 1.8em;
+        letter-spacing: 0.03rem;
+        margin-bottom: 6rem;
+
+        h2 {
+            text-align: center;
+            font-size: 2em;
+        }
+        h3 {
+            margin-top: 1.5em;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ECECEC;
+        }
+        p {
+            margin-top: 0em;
+            margin-bottom: 1em;
+        }
+        a {
+            color: #0099EE;
+        }
+
+        code {
+            background-color: #f3f1f1;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.4rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+        blockquote {
+            border-left: 0.3rem solid #ECECEC;
+            padding-left: 1rem;
+            margin-left: 0em;
         }
     }
 }
