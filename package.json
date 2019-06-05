@@ -29,7 +29,7 @@
     "jsclass": "~4.0.5",
     "marked": "~0.3.2",
     "moment": "^2.8.4",
-    "sequelize": "^2.0.0-rc3",
+    "sequelize": "^4.12.0",
     "sqlite3": "^4.0.2",
     "vinyl": "^0.4.6"
   }
