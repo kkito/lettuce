@@ -28,7 +28,7 @@
     "jade-var-matter": "0.0.5",
     "jsclass": "~4.0.5",
     "marked": "~0.3.2",
-    "moment": "^2.8.4",
+    "moment": "^2.29.2",
     "sequelize": "^5.8.7",
     "sqlite3": "^4.0.2",
     "vinyl": "^0.4.6"
